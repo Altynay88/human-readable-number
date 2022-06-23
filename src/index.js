@@ -39,17 +39,16 @@ module.exports = function toReadable(number) {
 
     if (number === 0) return "zero";
     if (number < 20) return singleToTeen[number];
-    if (strings.length === 2) return doubleDigit[strings[0]] + " " + singleToTeen[strings[1]];
+    if (strings.length === 2 && strings[1] !== "0") {
+        return doubleDigit[strings[0]] + " " + singleToTeen[strings[1]]
+    }
+    if (strings.length === 2) {
+        return doubleDigit[strings[0]]
+    }
     if (strings.length === 3) {
         if (strings[1] === "0" && strings[2] === "0") {
             return singleToTeen[strings[0]] + " hundred"
-        // } else if (strings[2] === "0") {
-        //     return (
-        //         singleToTeen[strings[0]] +
-        //         " hundred " +
-        //         doubleDigit[strings[1]]
-        //     );
-            } else {
+        } else {
             return (
                 singleToTeen[strings[0]] +
                 " hundred " +
